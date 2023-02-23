@@ -1,6 +1,5 @@
 package org.example.persistance;
 
-import org.example.data.Department;
 import org.example.data.Employee;
 
 import java.util.ArrayList;

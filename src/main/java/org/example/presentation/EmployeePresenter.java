@@ -1,6 +1,5 @@
 package org.example.presentation;
 
-import org.example.data.Department;
 import org.example.data.Employee;
 
 public abstract class EmployeePresenter {

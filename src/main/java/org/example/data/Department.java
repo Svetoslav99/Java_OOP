@@ -21,24 +21,12 @@ public class Department {
         return ID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getBudget() {
         return budget;
-    }
-
-    public void setBudget(double budget) {
-        this.budget = budget;
     }
 
     public List<Employee> getEmployees() {

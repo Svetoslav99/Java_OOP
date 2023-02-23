@@ -69,7 +69,6 @@ public class Main {
 
                     if (foundDepartment != null)
                         DepartmentPresenter.display(foundDepartment);
-
                 }
 
             }
