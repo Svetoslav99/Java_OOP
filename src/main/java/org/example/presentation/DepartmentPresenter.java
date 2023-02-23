@@ -16,7 +16,7 @@ public abstract class DepartmentPresenter {
         System.out.printf("Department: %s,%nID: %s,%nBudget: %.2f$/year,%nNot allocated: %.2f,%nEmployees: ",
                 department.getName(), department.getID(), department.getBudget(), leftOverBudget);
 
-        employees.forEach(employee -> System.out.printf("%s, ", employee));
+        System.out.printf(String.join(",", employees));
 
         System.out.println();
     }
