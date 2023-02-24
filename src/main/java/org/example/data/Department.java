@@ -36,4 +36,12 @@ public class Department {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
+    }
 }

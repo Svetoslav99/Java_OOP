@@ -10,4 +10,7 @@ public interface DepartmentPersistence {
 
     Department getDepartmentByName(String departmentName);
     Department searchInListForDepartmentById(String departmentId);
+
+    void updateDepartmentName(Department department, String newName);
+    void updateDepartmentBudget(Department department, double newBudget);
 }

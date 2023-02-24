@@ -19,18 +19,6 @@ import static org.mockito.Mockito.*;
 
 public class AssignDepartmentToEmployeeTest {
 
-//    private DepartmentPersistence departmentPersistence;
-//    private Map<Department, List<Employee>> departmentsWithEmployees;
-//    private EmployeePersistence employeePersistence;
-//    private AssignDepartmentToEmployee assignDepartmentToEmployee;
-
-//    @Before
-//    public void setUp() {
-//        departmentPersistence = mock(DepartmentPersistence.class);
-//        departmentsWithEmployees = new HashMap<>();
-//        employeePersistence = mock(EmployeePersistence.class);
-//        assignDepartmentToEmployee = new AssignDepartmentToEmployee(departmentPersistence, departmentsWithEmployees, employeePersistence);
-//    }
 
     @Test
     public void testAssignEmployeeToDepartmentSuccessfully() {

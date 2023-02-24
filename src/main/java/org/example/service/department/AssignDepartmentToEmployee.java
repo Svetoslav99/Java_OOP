@@ -5,6 +5,7 @@ import org.example.data.Employee;
 import org.example.persistance.DepartmentPersistence;
 import org.example.persistance.EmployeePersistence;
 import org.example.service.calculate.NeededMoneyFromBudget;
+import org.example.service.writer.WriteToFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class AssignDepartmentToEmployee {
     private DepartmentPersistence departmentPersistence;
     private Map<Department, List<Employee>> departmentsWithEmployees;
     private EmployeePersistence employeePersistence;
+    private WriteToFile writeToOutputFile = new WriteToFile();
 
     public AssignDepartmentToEmployee(DepartmentPersistence departmentPersistence, Map<Department,
             List<Employee>> departmentsWithEmployees, EmployeePersistence employeePersistence) {
@@ -38,7 +40,9 @@ public class AssignDepartmentToEmployee {
         double neededMoneyForDepartment = NeededMoneyFromBudget.calcByEmployeesAndIncomingEmployee(employeeList, employee);
 
         if (neededMoneyForDepartment > department.getBudget()) {
-            System.out.println("Unable to add employee " + employeeId + " to department " + departmentId + " as there is not enough budget!");
+            String message = "Unable to add employee " + employeeId + " to department " + departmentId + " as there is not enough budget!";
+            System.out.println(message);
+            writeToOutputFile.write(message);
             return;
         }
 

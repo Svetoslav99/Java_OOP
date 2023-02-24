@@ -2,14 +2,17 @@ package org.example.persistance;
 
 import junit.framework.TestCase;
 import org.example.data.Department;
+import org.example.data.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentPersistenceImplTest extends TestCase {
     private DepartmentPersistenceImpl departmentPersistence;
+    private EmployeePersistence employeePersistence;
 
     @Test
     public void testAddDepartment() {
@@ -86,5 +89,44 @@ public class DepartmentPersistenceImplTest extends TestCase {
             Department duplicateDepartment = new Department("001", "Department 1 - Duplicate",10000);
             departmentPersistence.addDepartment(duplicateDepartment);
         });
+    }
+
+    @Test
+    public void testUpdateDepartmentName() {
+        this.departmentPersistence = new DepartmentPersistenceImpl();
+        Department department = new Department("001", "Department 1", 30000);
+
+        String newName = "HR";
+        this.departmentPersistence.updateDepartmentName(department, newName);
+        assertEquals(newName, department.getName());
+    }
+
+    @Test
+    public void testUpdateDepartmentBudget() {
+        this.departmentPersistence = new DepartmentPersistenceImpl();
+        Department department = new Department("001", "Department 1", 30000);
+
+        double newBudget = 150000.0;
+        this.departmentPersistence.updateDepartmentBudget(department, newBudget);
+        assertEquals(newBudget, department.getBudget(), 0.001);
+    }
+
+    @Test
+    public void testUpdateDepartmentBudget_NotAbleToUpdate() {
+        this.departmentPersistence = new DepartmentPersistenceImpl();
+        Department department = new Department("001", "Department 1", 3000);
+
+        Employee employee1 = new Employee("001", "John", "Snow", 1000);
+        Employee employee2 = new Employee("002", "Eva", "Williams", 3000);
+
+        List<Employee> employees = new ArrayList<>();
+        employees.add(employee1);
+        employees.add(employee2);
+
+        department.setEmployees(employees);
+
+        double newBudget = 700.0;
+        this.departmentPersistence.updateDepartmentBudget(department, newBudget);
+        assertEquals(3000, department.getBudget(), 0.001);
     }
 }

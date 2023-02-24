@@ -1,0 +1,9 @@
+Unable to add employee 10003 to department 1001 as there is not enough budget!
+Employee ID: 10002, Name: JessicaDozer, Department: Technology, Salary: 144000.0
+
+Department: Technology
+,%nID: 1001
+,%nBudget: 1000000.0$/year,
+Not allocated: 736000.0
+Employees: 
+10001,10002

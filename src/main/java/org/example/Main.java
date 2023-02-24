@@ -19,6 +19,9 @@ public class Main {
 
         DepartmentWithEmployeesPersistence departmentsWithEmployees = new DepartmentWithEmployeesImpl(departments, employees);
 
+        // try to find employees.txt and departments.txt files. if there are none -> create them.
+
+
         while (!input.equals("End")) {
             String[] tokens = input.split(" ");
             String command = tokens[0];
@@ -69,6 +72,21 @@ public class Main {
 
                     if (foundDepartment != null)
                         DepartmentPresenter.display(foundDepartment);
+                }
+                case "UpdateDepartment" -> {
+                    String departmentId = tokens[1];
+                    String newName = tokens[2];
+                    double newBudget = Double.parseDouble(tokens[3]);
+
+                    Department foundDepartment = departments.searchInListForDepartmentById(departmentId);
+
+                    if (foundDepartment != null) {
+                        // update department
+                        departments.updateDepartmentName(foundDepartment, newName);
+                        departments.updateDepartmentBudget(foundDepartment, newBudget);
+
+                        DepartmentPresenter.display(foundDepartment);
+                    }
                 }
 
             }

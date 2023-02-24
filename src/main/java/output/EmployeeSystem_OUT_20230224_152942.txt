@@ -1,0 +1,5 @@
+Employee with ID 102 does not exist!
+Employee with ID 103 does not exist!
+Department with ID 102 does not exist!
+Employee ID: 100, Name: John Doe, Department: N/A, Salary: 1800000.0
+

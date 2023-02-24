@@ -1,12 +1,14 @@
 package org.example.persistance;
 
 import org.example.data.Employee;
+import org.example.service.writer.WriteToFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeePersistenceImpl implements EmployeePersistence{
+public class EmployeePersistenceImpl implements EmployeePersistence {
     private final List<Employee> employees;
+    private final WriteToFile writeToOutputFile = new WriteToFile();
 
     public EmployeePersistenceImpl() {
         this.employees = new ArrayList<>();
@@ -14,12 +16,16 @@ public class EmployeePersistenceImpl implements EmployeePersistence{
 
     @Override
     public void hireEmployee(Employee employee) {
-        List<Employee> foundEmployee = employees.stream()
+        Employee foundEmployee = employees.stream()
                 .filter(emp -> emp.getId().equals(employee.getId()))
-                .toList();
+                .findFirst()
+                .orElse(null);
 
-        if (foundEmployee.size() != 0) {
-            throw new IllegalArgumentException("Employee with " + employee.getId() + " already exists!");
+        if (foundEmployee != null) {
+            String message = "Employee with " + employee.getId() + " already exists!";
+            writeToOutputFile.write(message);
+            System.out.println(message);
+            return;
         }
 
         employees.add(employee);
@@ -40,7 +46,9 @@ public class EmployeePersistenceImpl implements EmployeePersistence{
                 .orElse(null);
 
         if (foundEmployee == null) {
-            System.out.println("Employee with ID " + employeeId + " does not exist!");
+            String message = "Employee with ID " + employeeId + " does not exist!";
+            writeToOutputFile.write(message);
+            System.out.println(message);
             return null;
         }
 
