@@ -1,1 +1,0 @@
-Unable to add employee 10003 to department 1001 as there is not enough budget!
